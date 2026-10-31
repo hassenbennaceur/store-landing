@@ -1,0 +1,233 @@
+/* =========================================================
+   LumoStore landing page - custom styles
+   Works on top of Bootstrap 5 (loaded before this file)
+   ========================================================= */
+
+/* ---------- 1. Design tokens (colours, radius, shadow) ---------- */
+:root {
+  --brand:      #ff6b35;   /* main accent (orange) */
+  --brand-dark: #e5551f;   /* hover state */
+  --ink:        #2b2d42;   /* dark text / dark backgrounds */
+  --muted:      #6c7086;   /* secondary text */
+  --soft:       #f7f5f2;   /* light section background */
+  --radius:     16px;
+  --shadow:     0 8px 24px rgba(43, 45, 66, .10);
+}
+
+/* ---------- 2. Base ---------- */
+html { scroll-behavior: smooth; }
+/* Offset anchor jumps so the sticky header does not cover section titles */
+section { scroll-margin-top: 70px; }
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  background: #fff;
+}
+
+/* Reusable primary button */
+.btn-brand {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: background .2s, transform .2s;
+}
+.btn-brand:hover,
+.btn-brand:focus {
+  background: var(--brand-dark);
+  border-color: var(--brand-dark);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ---------- 3. Header / navigation ---------- */
+.site-header {
+  background: rgba(255, 255, 255, .95);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+}
+.navbar-brand {
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--ink);
+}
+.navbar-brand i,
+.navbar-brand span { color: var(--brand); }
+
+.nav-link {
+  color: var(--ink);
+  font-weight: 500;
+  padding: .6rem 1rem !important;
+}
+.nav-link:hover { color: var(--brand); }
+
+/* Cart button + badge */
+.btn-cart {
+  font-size: 1.3rem;
+  color: var(--ink);
+  border: 0;
+}
+.cart-badge {
+  position: absolute;
+  top: 0;
+  right: -2px;
+  background: var(--brand);
+  font-size: .65rem;
+}
+
+/* ---------- 4. Hero ---------- */
+.hero {
+  min-height: 80vh;
+  padding: 4rem 0;
+  /* Pure CSS background: gradient + soft decorative circles */
+  background:
+    radial-gradient(circle at 85% 20%, rgba(255, 107, 53, .25) 0, transparent 40%),
+    radial-gradient(circle at 10% 90%, rgba(255, 107, 53, .15) 0, transparent 35%),
+    linear-gradient(135deg, #fff4ec 0%, #ffe3d3 100%);
+}
+.hero-badge {
+  background: #fff;
+  color: var(--brand);
+  border: 1px solid var(--brand);
+  font-weight: 600;
+  padding: .55em 1em;
+}
+.hero-title {
+  font-size: 3.6rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.hero-text {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 auto 2rem;          /* centred on mobile */
+}
+/* Left-aligned on large screens, next to the hero image */
+@media (min-width: 992px) {
+  .hero-text { margin-left: 0; }
+}
+
+/* Hero picture card */
+.hero-img {
+  border-radius: 28px;
+  box-shadow: 0 24px 50px rgba(43, 45, 66, .22);
+  transform: rotate(3deg);
+}
+
+/* ---------- 5. Features strip ---------- */
+.features { background: var(--ink); color: #fff; }
+.feature {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+}
+.feature i { font-size: 1.8rem; color: var(--brand); }
+.feature strong { display: block; font-size: .95rem; }
+.feature small  { color: #b9bccc; }
+
+/* ---------- 6. Products ---------- */
+.products { background: var(--soft); }
+
+.section-heading { margin-bottom: 3rem; }
+.section-heading h2 { font-weight: 800; }
+.section-heading p  { color: var(--muted); }
+
+.product-card {
+  position: relative;
+  border: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform .25s, box-shadow .25s;
+}
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 34px rgba(43, 45, 66, .18);
+}
+.product-card img { aspect-ratio: 4 / 3; object-fit: cover; }
+.product-card .card-title { font-size: 1.1rem; font-weight: 700; }
+.product-card .card-text  { color: var(--muted); font-size: .92rem; }
+
+.price { font-size: 1.25rem; font-weight: 800; color: var(--ink); }
+.price del { font-size: .85rem; font-weight: 400; color: var(--muted); }
+
+/* Small label in the top-left corner of a card */
+.product-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  background: var(--ink);
+  font-weight: 600;
+  padding: .5em .9em;
+  border-radius: 50px;
+}
+.tag-new  { background: #2a9d8f; }
+.tag-sale { background: #e63946; }
+
+/* ---------- 7. Newsletter ---------- */
+.newsletter { background: var(--brand); color: #fff; }
+.newsletter h2 { font-weight: 800; }
+.newsletter p  { opacity: .9; }
+
+/* ---------- 8. Footer ---------- */
+.site-footer { background: #1b1c2e; color: #b9bccc; }
+.site-footer h5,
+.site-footer h6 { color: #fff; font-weight: 700; }
+.site-footer h5 i { color: var(--brand); }
+.site-footer a { color: #b9bccc; text-decoration: none; }
+.site-footer a:hover { color: var(--brand); }
+.site-footer li { margin-bottom: .4rem; }
+.site-footer hr { border-color: rgba(255, 255, 255, .15); margin-top: 2rem; }
+.copyright { padding-bottom: 1.5rem; margin: 0; font-size: .9rem; }
+
+/* Round social icons */
+.social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-right: .4rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .08);
+  color: #fff;
+  font-size: 1.1rem;
+  transition: background .2s, transform .2s;
+}
+.social a:hover { background: var(--brand); color: #fff; transform: translateY(-3px); }
+
+/* =========================================================
+   RESPONSIVE: media queries (desktop-first, shrinking down)
+   ========================================================= */
+
+/* Tablets and below (< 992px): navbar becomes a hamburger menu */
+@media (max-width: 991.98px) {
+  .hero { min-height: 70vh; }
+  .hero-title { font-size: 2.9rem; }
+
+  /* Give the opened mobile menu a tidy look */
+  #mainNav { padding: .5rem 0 1rem; }
+  .nav-link { border-bottom: 1px solid #eee; }
+}
+
+/* Large phones (< 768px) */
+@media (max-width: 767.98px) {
+  .hero { min-height: 60vh; padding: 3rem 0; }
+  .hero-title { font-size: 2.3rem; }
+  .hero-text  { font-size: 1.05rem; }
+  .section-heading { margin-bottom: 2rem; }
+}
+
+/* Small phones (< 576px) */
+@media (max-width: 575.98px) {
+  .hero-title { font-size: 2rem; }
+  .hero .btn  { width: 100%; }          /* full-width CTA on small screens */
+  .feature { flex-direction: column; text-align: center; gap: .3rem; }
+  .site-footer { text-align: center; }
+  .social a { margin: 0 .2rem; }
+}
